@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="DIAL: Aligning LLMs with Domain Invariant Reward Models">
+  <meta name="keywords" content="reward models, domain invariance, LLM">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DIAL: Aligning LLMs with Domain Invariant Reward Models</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav> -->
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">DIAL: Aligning LLMs with Domain Invariant Reward Models</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"></span>
+              <a href="https://github.com/david9dragon9">David Wu</a>,</span>
+            <span class="author-block">
+              <a href="https://sanjibanc.github.io/">Sanjiban Choudhury</a><sup>1</sup>,</span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Cornell University</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/portal-cornell/dial"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+              </span> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Aligning large language models (LLMs) to human preferences is challenging in domains where preference data is unavailable.
+            We address the problem of learning reward models for such target domains by leveraging feedback collected from simpler source domains, where human preferences are easier to obtain.
+            Our key insight is that, while domains may differ significantly, human preferences convey <i>domain-agnostic</i> concepts that can be effectively captured by a reward model.
+            We propose <var>DIAL</var>, a framework that trains domain-invariant reward models by optimizing a dual loss: a domain loss that minimizes the divergence between source and target distribution, and a source loss that optimizes preferences on the source domain.
+            We show <var>DIAL</var> is a general approach that we evaluate and analyze across 4 distinct settings: <b>(1)</b> Cross-lingual transfer (accuracy: 0.621 → 0.661), <b>(2)</b> Clean-to-noisy (accuracy: 0.671 → 0.703), <b>(3)</b> Few-shot-to-full transfer (accuracy: 0.845 → 0.920), and <b>(4)</b> Simple-to-complex tasks transfer (correlation: 0.508 → 0.556).
+            Our code, models and data are available at <href>https://github.com/portal-cornell/dial</href>.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>  
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./static/images/intro.jpg" alt="Overall Approach Image" style="width: 100%; display: block;">
+      <h2 class="subtitle has-text-centered">
+        <b>DIAL overview</b>. <var>DIAL</var> trains domain-invariant reward model for target domains with no labeled preference data. <var>DIAL</var> leverages labeled source data and unlabeled target data to train reward models on a dual loss: a domain loss that minimizes the divergence between source and target distribution, and a source loss that optimizes preferences on the source domain. 
+        We show <var>DIAL</var> is a general approach that we evaluate and analyze across 4 distinct applications: <b>(1)</b> Cross-lingual transfer, <b>(2)</b> Clean-to-noisy, <b>(3)</b> Few-shot-to-full transfer, and <b>(4)</b> Simple-to-complex tasks transfer.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+    <!-- <div class="hero-body">
+      <img src="./static/images/step_overall_approach.png" alt="Overall Approach Image" style="width: 100%; display: block;">
+      <h2 class="subtitle has-text-centered">
+        Example of <span class="dnerf">SteP</span> solving a web task in a Customer Management System (CMS) website. 
+      </h2>
+    </div> -->
+  <!-- </div>
+</section>  -->
+
+<!-- <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{sodhi2024step,
+  title     = {SteP: Stacked LLM Policies for Web Actions},
+  author    = {Sodhi, Paloma and Branavan, SRK and Artzi, Yoav and McDonald, Ryan},
+  journal   = {arXiv preprint arXiv:2310.03720},
+  year      = {2024},
+}</code></pre>
+  </div>
+</section>  -->
+
+<footer class="footer">
+  <div class="container">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>. <br> Website template borrowed from <a
+            href="https://github.com/nerfies/nerfies.github.io">source code</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
