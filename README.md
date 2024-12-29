@@ -144,6 +144,11 @@ Explanation of each parameter:
 Hyperparameters for the individual tasks are specified in the paper.
 
 ### XS RL Data
+Before training, you must start an LLM evaluation server using the following command:
+```bash
+CUDA_VISIBLE_DEVICES=0 python -m sglang.launch_server --port 7502 --model-path meta-llama/Llama-3.1-8B-Instruct
+```
+
 ```bash
 accelerate launch scripts/train/full_rl.py --train-reward \
                   --seed 2 \
