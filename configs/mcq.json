@@ -1,0 +1,6 @@
+{
+    "input_columns": ["prompt", "correct", "wrong_a", "wrong_b", "wrong_c", "wrong_d"],
+    "target_columns": [],
+    "target_input_columns": ["prompt", "correct", "wrong_a", "wrong_b", "wrong_c", "wrong_d"],
+    "target_target_columns": []
+}

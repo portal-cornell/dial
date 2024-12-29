@@ -1,0 +1,6 @@
+{
+    "input_columns": ["prompt", "response_chosen", "response_rejected"],
+    "target_columns": [],
+    "target_input_columns": ["prompt", "response_chosen", "response_rejected"],
+    "target_target_columns": []
+}

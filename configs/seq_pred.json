@@ -1,0 +1,6 @@
+{
+    "input_columns": ["text"],
+    "target_columns": ["label"],
+    "target_input_columns": ["text"],
+    "target_target_columns": ["label"]
+}

@@ -1,0 +1,22 @@
+{
+    "embeds_idx": [0],
+    "da_type": "wdgrl",
+    "da_lambda": 0.01,
+    "da_spec_config": {
+        "wdgrl": {
+            "gp_da_lambda": 1.0,
+            "critic_iter": 3
+        }
+    },
+    "adv_config": {
+        "da_optimizer_config": {
+            "lr": 0.0001,
+            "weight_decay": 0.001
+        },
+        "da_net_config": {
+            "layers_width": [256, 128],
+            "act_function": "gelu",
+            "dropout": 0.0
+        }
+    }
+}

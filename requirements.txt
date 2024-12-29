@@ -1,0 +1,15 @@
+torch
+numpy
+accelerate
+transformers
+colorama
+peft
+wandb
+datasets
+trl
+vllm
+git+https://github.com/lm-sys/FastChat.git
+da
+scipy
+sglang
+liger-kernel
