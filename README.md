@@ -1,5 +1,5 @@
 # ⏲️ DIAL: Aligning LLMs with Domain Invariant Reward Models
-Paper link: 
+Paper link: https://arxiv.org/pdf/2501.00911
 
 Website link: 
 
